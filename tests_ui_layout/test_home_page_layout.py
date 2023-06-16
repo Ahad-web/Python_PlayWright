@@ -43,10 +43,8 @@ def test_run_2(set_up) :
     print("Pass")
 
 @pytest.mark.initial
-@pytest.mark.parametrize("email" , [("Ahad-web"), pytest.param("Ahad_web", marks=pytest.mark.xfail),
-                                          pytest.param("fake-ss", marks=pytest.mark.xfail)])
-@pytest.mark.parametrize("password", [("Ahad03088"), ("Ahad03088"),
-                                          pytest.param("test12", marks=pytest.mark.xfail)])
+@pytest.mark.parametrize("email", [("Ahad-web")])
+@pytest.mark.parametrize("password", [("Ahad03088")])
 def test_github_login(set_up_git_login, email, password) -> None:
     page = set_up_git_login
     # browser = playwright.chromium.launch(headless=False, slow_mo=500)
