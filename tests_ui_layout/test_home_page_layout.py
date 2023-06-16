@@ -1,5 +1,7 @@
 import pytest
 from playwright.sync_api import Playwright, sync_playwright, expect
+
+import utils.secret_config
 from pom.home_page_elements import HomePage
 
 @pytest.mark.smoke
@@ -43,9 +45,10 @@ def test_run_2(set_up) :
     print("Pass")
 
 # @pytest.mark.initial
-# # @pytest.mark.parametrize("email", [("//")])
-# # @pytest.mark.parametrize("password", [("//")])
-# @pytest.mark.parametrize("email, password", [("//","//")])
+# # @pytest.mark.parametrize("email", [("Ahad-web")])
+# # @pytest.mark.parametrize("password", [(utils.secret_config.PASSWORD)])
+# # @pytest.mark.parametrize("password", [(os.environ.['PASSWORD'])])
+# @pytest.mark.parametrize("email, password", [("Ahad-web" , utils.secret_config.PASSWORD)])
 # def test_github_login(set_up_git_login, email, password) -> None:
 #     page = set_up_git_login
 #     # browser = playwright.chromium.launch(headless=False, slow_mo=500)
