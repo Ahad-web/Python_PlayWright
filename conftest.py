@@ -52,15 +52,15 @@ def contact_page_fill(set_up):
 
     yield page
 
-@pytest.fixture
-def set_up_git_login(page):
-    # # Access
-    # browser = playwright.chromium.launch(headless=False, slow_mo=500)
-    # context = browser.new_context()
-    # # Open new page
-    # page = context.new_page()
-    page.goto("https://github.com/")
-    page.set_default_timeout(3000)
-
-    yield page
-    page.close()
+# @pytest.fixture
+# def set_up_git_login(page):
+#     # # Access
+#     # browser = playwright.chromium.launch(headless=False, slow_mo=500)
+#     # context = browser.new_context()
+#     # # Open new page
+#     # page = context.new_page()
+#     page.goto("https://github.com/")
+#     page.set_default_timeout(3000)
+#
+#     yield page
+#     page.close()
