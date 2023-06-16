@@ -2,21 +2,20 @@ import pytest
 from playwright.sync_api import Playwright
 
 
-@pytest.fixture(scope="function")
-def set_up(browser):
+@pytest.fixture
+def set_up(page):
     # # Access
     # browser = playwright.chromium.launch(headless=False, slow_mo=500)
-    context = browser.new_context()
+    # context = browser.new_context()
     # # Open new page
-    page = context.new_page()
+    # page = context.new_page()
     page.goto("https://symonstorozhenko.wixsite.com/website-1")
     page.set_default_timeout(3000)
 
     yield page
     page.close()
 
-
-@pytest.fixture(scope="function")
+@pytest.fixture
 def contact_page_fill(set_up):
     # # Access
     # browser = playwright.chromium.launch(headless=False, slow_mo=500)
@@ -53,8 +52,7 @@ def contact_page_fill(set_up):
 
     yield page
 
-
-@pytest.fixture(scope="function")
+@pytest.fixture
 def set_up_git_login(page):
     # # Access
     # browser = playwright.chromium.launch(headless=False, slow_mo=500)
@@ -62,7 +60,7 @@ def set_up_git_login(page):
     # # Open new page
     # page = context.new_page()
     page.goto("https://github.com/")
-    page.set_default_timeout(30000)
+    page.set_default_timeout(3000)
 
     yield page
     page.close()
