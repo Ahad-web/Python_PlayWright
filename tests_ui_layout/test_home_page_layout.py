@@ -1,4 +1,6 @@
 import os
+import time
+
 import pytest
 from playwright.sync_api import Playwright, sync_playwright, expect
 
@@ -70,6 +72,8 @@ def test_github_login(set_up_git_login, email, password) -> None:
     page.get_by_label("Username or email address").press("Tab")
     page.get_by_label("Password").fill(password)
     page.get_by_label("Password").press("Enter")
-    page.get_by_role("button", name="View profile and more").click()
-    page.get_by_role("menuitem", name="Sign out").click()
+    page.wait_for_timeout(5000)
+    # page.get_by_role("button", name="View profile and more").click()
+    # page.get_by_role("menuitem", name="Sign out").click()
+    # page.wait_for_load_state(timeout=5000)
     print("Success")

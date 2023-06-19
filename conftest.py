@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from playwright.sync_api import Playwright
 
@@ -72,8 +74,10 @@ def set_up_git_login(page):
     # context = browser.new_context()
     # # Open new page
     # page = context.new_page()
-    page.goto("https://github.com/sessions/verified-device")
+    page.goto("https://github.com/")
     page.set_default_timeout(3000)
+    page.wait_for_load_state(timeout=5000)
+    time.sleep(4)
 
     yield page
     page.close()
