@@ -13,4 +13,3 @@ def login_setup_for_chat(context_1,context_2, browser):
     yield page1,page2
     page1.close()
     page2.close()
-
