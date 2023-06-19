@@ -15,24 +15,22 @@ def set_up(page):
     yield page
     page.close()
 
-
-@pytest.fixture(scope='session')
-def context_creation(playwright):
-    # # Access
-    browser = playwright.chromium.launch(headless=False, slow_mo=500)
-    context = browser.new_context()
-    # # Open new page
-    page = context.new_page()
-    # page.goto("/collection")
-    # page.set_default_timeout(3000)
-    # page = set_up
+@pytest.fixture
+def contact_page_fill(set_up):
     # # Access
     # browser = playwright.chromium.launch(headless=False, slow_mo=500)
     # context = browser.new_context()
     # # Open new page
     # page = context.new_page()
-    page.goto("https://symonstorozhenko.wixsite.com/website-1")
-    page.set_default_timeout(3000)
+    # page.goto("/collection")
+    # page.set_default_timeout(3000)
+    page = set_up
+    # # Access
+    # browser = playwright.chromium.launch(headless=False, slow_mo=500)
+    # context = browser.new_context()
+    # # Open new page
+    # page = context.new_page()
+    # page.goto("https://symonstorozhenko.wixsite.com/website-1")
     # Act what to do
     page.get_by_role("link", name="Contact Us").click()
     page.get_by_placeholder("Enter your name").click()
@@ -52,18 +50,7 @@ def context_creation(playwright):
     page.get_by_test_id("buttonElement").click()
     print("Pass")
 
-    yield context
-
-
-@pytest.fixture()
-def contact_page_fill(context_creation):
-    context = context_creation
-    page = context.new_page()
-    page.goto("https://symonstorozhenko.wixsite.com/website-1")
-    page.set_default_timeout(3000)
-
     yield page
-
 
 @pytest.fixture()
 def set_up_git_login(page):
@@ -72,7 +59,7 @@ def set_up_git_login(page):
     # context = browser.new_context()
     # # Open new page
     # page = context.new_page()
-    page.goto("https://github.com/sessions/verified-device")
+    page.goto("https://github.com/")
     page.set_default_timeout(3000)
 
     yield page
